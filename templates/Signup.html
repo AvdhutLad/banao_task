@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Form</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #e9ecef;
+            margin: 0;
+            padding: 20px;
+        }
+        .header {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .header h1 {
+            margin: 0;
+            color: #007bff;
+            font-size: 32px;
+        }
+        .header p {
+            margin: 5px 0 0;
+            color: #555555;
+            font-size: 16px;
+        }
+        .signup-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 25px;
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .signup-container h2 {
+            text-align: center;
+            color: #007bff;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        .form-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        .form-group {
+            flex: 1;
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333333;
+        }
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="password"],
+        .form-group input[type="file"],
+        .form-group input[type="number"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+        .form-group input[type="file"] {
+            padding: 3px;
+        }
+        .form-group .radio-group {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        .form-group .radio-group label {
+            font-weight: normal;
+            display: flex;
+            align-items: center;
+        }
+        .form-group .radio-group input[type="radio"] {
+            margin-right: 5px;
+        }
+        .form-group input[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            background-color: #28a745;
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        .form-group input[type="submit"]:hover {
+            background-color: #218838;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        .login-link {
+            text-align: center;
+            margin-top: 15px;
+        }
+        .login-link a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Welcome to Our Medical Portal</h1>
+        <p>Your one-stop solution for healthcare management</p>
+    </div>
+    <div class="signup-container">
+        <h2>Signup Form</h2>
+        <form id="signupForm" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="firstName">First Name</label>
+                    <input type="text" id="firstName" name="firstName" required>
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" id="lastName" name="lastName" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="profilePicture">Profile Picture</label>
+                    <input type="file" id="profilePicture" name="profilePicture" accept="image/*">
+                </div>
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="email">Email Id</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label>User Type</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="userType" value="doctor" required> Doctor</label>
+                        <label><input type="radio" name="userType" value="patient" required> Patient</label>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" required>
+                    <div id="passwordError" class="error"></div>
+                </div>
+                
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="addressLine1">Address Line 1</label>
+                    <input type="text" id="addressLine1" name="addressLine1" required>
+                </div>
+                <div class="form-group">
+                    <label for="city">City</label>
+                    <input type="text" id="city" name="city" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="state">State</label>
+                    <input type="text" id="state" name="state" required>
+                </div>
+                <div class="form-group">
+                    <label for="pincode">Pincode</label>
+                    <input type="number" id="pincode" name="pincode" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Sign Up">
+            </div>
+        </form>
+        <div class="login-link">
+            Already have an account? <a href={% url "login" %}>Login here</a>
+        </div>
+    </div>
+    <script>
+        document.getElementById('signupForm').addEventListener('submit', function(event) {
+            var password = document.getElementById('password').value;
+            var confirmPassword = document.getElementById('confirmPassword').value;
+            var passwordError = document.getElementById('passwordError');
+            if (password !== confirmPassword) {
+                passwordError.textContent = "Passwords do not match!";
+                event.preventDefault();
+            } else {
+                passwordError.textContent = "";
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Dashboard</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 20px;
+        }
+        .dashboard-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #28a745;
+        }
+        .dashboard-section {
+            margin-bottom: 20px;
+        }
+        .dashboard-section h3 {
+            color: #333;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #28a745;
+            padding-bottom: 5px;
+        }
+        .dashboard-section p {
+            margin: 0;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+        }
+        .profile-info {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+        }
+        .profile-info img {
+            border-radius: 50%;
+            margin-right: 20px;
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border: 2px solid #28a745;
+        }
+        .profile-info h3 {
+            margin-top: 0;
+        }
+        .logout-button {
+            display: block;
+            width: 100px;
+            margin: 20px auto;
+            padding: 10px 0;
+            text-align: center;
+            background-color: #dc3545;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        .logout-button:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <h2>Patient Dashboard</h2>
+
+        <div class="profile-info">
+            <img src="{{ user.profile_picture.url }}" alt="User Photo">
+            <div>
+                <h3>Profile Information</h3>
+                <p><strong>Name:</strong> {{ user.first_name }} {{ user.last_name }}</p>
+                <p><strong>Username:</strong> {{ user.username }}</p>
+                <p><strong>Email:</strong> {{ user.email }}</p>
+                <p><strong>Address:</strong> {{ user.address_line1 }}, {{ user.city }}, {{ user.state }}, {{ user.pincode }}</p>
+            </div>
+        </div>
+
+        <div class="dashboard-section">
+            <h3>My Appointments</h3>
+            <p>Your next appointment is on 20th August at 10:00 AM.</p>
+        </div>
+
+        <div class="dashboard-section">
+            <h3>Medical History</h3>
+            <p>Review your medical history here.</p>
+        </div>
+
+        <div class="dashboard-section">
+            <h3>Prescriptions</h3>
+            <p>You have 2 new prescriptions.</p>
+        </div>
+        <a href={% url "logout" %} class="logout-button">Logout</a>
+    </div>
+</body>
+</html>
