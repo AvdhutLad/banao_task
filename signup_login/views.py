@@ -49,7 +49,7 @@ def signup(request):
         except ValidationError as e:
             messages.error(request, str(e))
     
-    return render(request, 'signup.html')
+    return render(request, 'Signup.html')
 
 
 def login_view(request):
