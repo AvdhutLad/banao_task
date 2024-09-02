@@ -27,6 +27,10 @@ urlpatterns = [
     path('login/', views.login_view, name='login'),
     path('doctor_dashboard/', views.doctor_dashboard, name='doctor_dashboard'),
     path('patient_dashboard/', views.patient_dashboard, name='patient_dashboard'),
+    path('addBlog/', views.addBlog, name='addBlog'),
+    path('manageBlog/', views.manageBlog, name='manageBlog'),
+    path('deleteBlog/<int:blog_id>', views.deleteBlog, name='deleteBlog'),
+    path('editBlog/<int:blog_id>', views.editBlog, name='editBlog'),
     path('logout/', views.logout, name='logout'),
 ]
 if settings.DEBUG:

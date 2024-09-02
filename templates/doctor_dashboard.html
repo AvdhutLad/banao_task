@@ -73,6 +73,21 @@
         .logout-button:hover {
             background-color: #c82333;
         }
+        .button {
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            text-align: center;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            margin-bottom: 10px;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
@@ -91,6 +106,14 @@
         </div>
 
         <div class="dashboard-section">
+            <h3>Manage Blogs</h3>
+
+            <a href="{% url 'addBlog' %}" class="button">Add New Blog</a>
+            <a href="{% url 'manageBlog'  %}" class="button">View & Manage My Blogs</a>
+
+        </div>
+
+        <div class="dashboard-section">
             <h3>Upcoming Appointments</h3>
             <p>You have 5 appointments today.</p>
         </div>
@@ -104,13 +127,7 @@
             <h3>Notifications</h3>
             <p>You have 3 new messages.</p>
         </div>
-        <a href={% url "logout" %} class="logout-button">Logout</a>
+        <a href="{% url 'logout' %}" class="logout-button">Logout</a>
     </div>
 </body>
 </html>
-
-
-
-
-
-
